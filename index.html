@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Real Estate Equity Lending — Offers (Ark7 Units)</title>
-  <meta name="description" content="Professional real estate equity lending page for two offers: Tampa‑S10 and Atlanta‑T4. Shows estimated per‑share distributions, available shares, broker, and a simple estimator." />
+  <meta name="description" content="Professional real estate equity lending page for two offers: Tampa-S10 and Atlanta-T4. Shows estimated per-share distributions, available shares, broker, and a simple estimator." />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html{scroll-behavior:smooth}
@@ -14,11 +14,6 @@
     .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
     .sticky-th th{position:sticky;top:0;background-color:rgb(2 6 23/.85);backdrop-filter:saturate(160%) blur(4px)}
   </style>
-  <!--
-    NOTE: Images are embedded as Base64 data URIs. Replace these placeholders with your full‑resolution Base64 strings (raw characters only):
-      {{ATLANTA_T4_BASE64}}  → Atlanta‑T4 JPEG base64 (do NOT include the data: prefix)
-      {{TAMPA_S10_BASE64}}   → Tampa‑S10 JPEG base64 (do NOT include the data: prefix)
-  -->
 </head>
 <body class="bg-slate-950 text-slate-100">
   <!-- Header -->
@@ -45,7 +40,7 @@
     <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
       <div class="max-w-3xl">
         <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight tracking-tight">Real Estate Equity Lending</h1>
-        <p class="mt-4 text-slate-300">Two equity‑backed offers with fixed, simple estimates per share based on current value. Clear terms. Fast response. Secure escrow.</p>
+        <p class="mt-4 text-slate-300">Two equity-backed offers with fixed, simple estimates per share based on current value. Clear terms. Fast response. Secure escrow.</p>
         <div class="mt-6 text-xs text-slate-400">Estimates only — not financial advice. Availability and terms subject to diligence, KYC/AML, and approval.</div>
       </div>
     </div>
@@ -66,10 +61,10 @@
         <div class="glass rounded-2xl ring-grad p-6 flex flex-col gap-4">
           <div class="flex items-start justify-between gap-3">
             <div>
-              <!-- Tampa image embedded -->
-              <img src="data:image/jpeg;base64,{{TAMPA_S10_BASE64}}" alt="Tampa‑S10 Property" class="rounded-lg mb-4" />
+              <!-- Tampa image -->
+              <img src="IMG_5976.jpg" alt="Tampa-S10 Property" class="rounded-lg mb-4 w-full h-auto" />
               <div class="text-xs uppercase tracking-wide text-slate-400">Property</div>
-              <h2 class="text-xl font-semibold">Tampa‑S10</h2>
+              <h2 class="text-xl font-semibold">Tampa-S10</h2>
             </div>
             <span class="rounded-full bg-emerald-400/15 text-emerald-300 text-xs px-2.5 py-1 ring-1 ring-emerald-400/25">Available</span>
           </div>
@@ -91,17 +86,17 @@
               <dd class="font-medium">$0.10</dd>
             </div>
           </dl>
-          <a href="#inquire-tampa" class="rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5 text-sm w-fit">Inquire about Tampa‑S10</a>
+          <a href="#inquire-tampa" class="rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5 text-sm w-fit">Inquire about Tampa-S10</a>
         </div>
 
         <!-- Atlanta-T4 card -->
         <div class="glass rounded-2xl ring-grad p-6 flex flex-col gap-4">
           <div class="flex items-start justify-between gap-3">
             <div>
-              <!-- Atlanta image embedded -->
-              <img src="data:image/jpeg;base64,{{ATLANTA_T4_BASE64}}" alt="Atlanta‑T4 Property" class="rounded-lg mb-4" />
+              <!-- Atlanta image -->
+              <img src="IMG_6171.jpg" alt="Atlanta-T4 Property" class="rounded-lg mb-4 w-full h-auto" />
               <div class="text-xs uppercase tracking-wide text-slate-400">Property</div>
-              <h2 class="text-xl font-semibold">Atlanta‑T4</h2>
+              <h2 class="text-xl font-semibold">Atlanta-T4</h2>
             </div>
             <span class="rounded-full bg-emerald-400/15 text-emerald-300 text-xs px-2.5 py-1 ring-1 ring-emerald-400/25">Available</span>
           </div>
@@ -123,7 +118,7 @@
               <dd class="font-medium">$0.10</dd>
             </div>
           </dl>
-          <a href="#inquire-atlanta" class="rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5 text-sm w-fit">Inquire about Atlanta‑T4</a>
+          <a href="#inquire-atlanta" class="rounded-xl border border-white/15 px-4 py-2 hover:bg-white/5 text-sm w-fit">Inquire about Atlanta-T4</a>
         </div>
       </div>
 
@@ -142,7 +137,12 @@
           </thead>
           <tbody class="divide-y divide-white/5">
             <tr class="hover:bg-white/5">
-              <td class="px-4 py-3 font-medium">Tampa‑S10</td>
+              <td class="px-4 py-3 font-medium">
+                <div class="flex items-center gap-2">
+                  <img src="IMG_5976.jpg" alt="Tampa-S10" class="w-10 h-10 object-cover rounded"/>
+                  Tampa-S10
+                </div>
+              </td>
               <td class="px-4 py-3">Ark7</td>
               <td class="px-4 py-3 text-right">6</td>
               <td class="px-4 py-3 text-right">$1.20</td>
@@ -150,7 +150,12 @@
               <td class="px-4 py-3 text-right"><span class="rounded-full bg-emerald-400/15 text-emerald-300 text-xs px-2.5 py-1 ring-1 ring-emerald-400/25">Available</span></td>
             </tr>
             <tr class="hover:bg-white/5">
-              <td class="px-4 py-3 font-medium">Atlanta‑T4</td>
+              <td class="px-4 py-3 font-medium">
+                <div class="flex items-center gap-2">
+                  <img src="IMG_6171.jpg" alt="Atlanta-T4" class="w-10 h-10 object-cover rounded"/>
+                  Atlanta-T4
+                </div>
+              </td>
               <td class="px-4 py-3">Ark7</td>
               <td class="px-4 py-3 text-right">1</td>
               <td class="px-4 py-3 text-right">$1.20</td>
@@ -169,12 +174,12 @@
       <div class="glass rounded-2xl ring-grad p-6 grid md:grid-cols-2 gap-6 items-start">
         <div>
           <h3 class="text-2xl font-bold mb-2">Income Estimator</h3>
-          <p class="text-slate-300 mb-4">Estimate your monthly and yearly dollars based on shares. Figures use the provided <em>estimated</em> per‑share distribution ($1.20/year = $0.10/month).</p>
+          <p class="text-slate-300 mb-4">Estimate your monthly and yearly dollars based on shares. Figures use the provided <em>estimated</em> per-share distribution ($1.20/year = $0.10/month).</p>
           <div class="grid grid-cols-2 gap-3 mb-3">
             <label class="block text-sm col-span-2">Choose Property
               <select id="prop" class="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-sm">
-                <option value="tampa">Tampa‑S10 (6 shares available)</option>
-                <option value="atlanta">Atlanta‑T4 (1 share available)</option>
+                <option value="tampa">Tampa-S10 (6 shares available)</option>
+                <option value="atlanta">Atlanta-T4 (1 share available)</option>
               </select>
             </label>
             <label class="block text-sm">Your Shares
@@ -213,11 +218,11 @@
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
       <div class="glass rounded-2xl ring-grad p-6 grid md:grid-cols-2 gap-6 items-start">
         <div id="inquire-tampa">
-          <h3 class="text-xl font-bold">Inquire — Tampa‑S10</h3>
+          <h3 class="text-xl font-bold">Inquire — Tampa-S10</h3>
           <p class="text-slate-300">Email <a class="text-cyan-300 hover:underline" href="mailto:paytontvirgil@gmail.com?subject=Equity%20Lending%20Inquiry%20-%20Tampa-S10">paytontvirgil@gmail.com</a> with your requested shares and structure.</p>
         </div>
         <div id="inquire-atlanta">
-          <h3 class="text-xl font-bold">Inquire — Atlanta‑T4</h3>
+          <h3 class="text-xl font-bold">Inquire — Atlanta-T4</h3>
           <p class="text-slate-300">Email <a class="text-cyan-300 hover:underline" href="mailto:paytontvirgil@gmail.com?subject=Equity%20Lending%20Inquiry%20-%20Atlanta-T4">paytontvirgil@gmail.com</a> with your requested shares and structure.</p>
         </div>
       </div>
@@ -269,3 +274,4 @@
   </script>
 </body>
 </html>
+
