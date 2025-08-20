@@ -179,15 +179,14 @@
     </div>
   </section>
 
-  <!-- Cost Estimator -->
+  <!-- Cost Estimator (Term in months) -->
   <section id="estimator" class="border-t border-white/10">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
       <div class="glass rounded-2xl ring-grad p-6 grid md:grid-cols-2 gap-6 items-start">
         <div>
           <h3 class="text-2xl font-bold mb-2">Cost Estimator</h3>
           <p class="text-slate-300 mb-4">
-            Estimate your <strong>borrowing cost</strong> (monthly and yearly) based on shares. Figures use the provided
-            <em>estimated</em> per-share cost.
+            Estimate your <strong>borrowing cost</strong> based on shares and a term length (months).
           </p>
           <div class="grid grid-cols-2 gap-3 mb-3">
             <label class="block text-sm col-span-2">Choose Property
@@ -199,8 +198,8 @@
             <label class="block text-sm">Your Shares
               <input id="shares" type="number" min="0" step="1" value="6" class="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2" />
             </label>
-            <label class="block text-sm">Yearly Cost / Share ($)
-              <input id="perYear" type="number" step="0.01" value="1.20" class="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2" />
+            <label class="block text-sm">Term (months)
+              <input id="months" type="number" min="1" step="1" value="12" class="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-3 py-2" />
             </label>
             <div class="col-span-2 flex gap-3 mt-1">
               <button id="calcBtn" class="rounded-xl bg-cyan-500/20 text-cyan-200 px-4 py-2 hover:bg-cyan-500/30" type="button">Calculate</button>
@@ -210,16 +209,16 @@
           <div class="mt-2 text-sm space-y-1">
             <div>Monthly Cost / Share: <span id="mps" class="font-semibold"></span></div>
             <div>Monthly Cost (Total): <span id="mtot" class="font-semibold"></span></div>
-            <div>Yearly Cost (Total): <span id="ytot" class="font-semibold"></span></div>
+            <div>Total Cost (for Term): <span id="ttot" class="font-semibold"></span></div>
           </div>
         </div>
         <div>
           <h4 class="font-semibold mb-2">How this works</h4>
           <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
-            <li>This calculator shows the <strong>cost to you as the borrower</strong></li>
-            <li>Monthly cost / share = (Yearly cost / share) ÷ 12.</li>
-            <li>You can change the numbers to model different assumptions.</li>
-            <li>Final terms depend on diligence, escrow, and counterparty approval.</li>
+            <li>Assumption: $1.20/year/share ⇒ $0.10/month/share.</li>
+            <li>Monthly total = $0.10 × shares.</li>
+            <li>Total for term = monthly total × months.</li>
+            <li>Adjust shares and term to model scenarios.</li>
           </ul>
           <p class="text-xs text-slate-500 mt-3">Ark7 referenced as broker for identification only. This page is privately maintained and not affiliated with or endorsed by Ark7.</p>
         </div>
@@ -297,37 +296,47 @@
     btnList.addEventListener('click', ()=> setView('list'));
     setView('cards'); // default
 
-    // Cost estimator
+    // ===== Cost Estimator (Term in months) =====
     const fmtUSD = new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'});
-    const prop = document.getElementById('prop');
+    const prop   = document.getElementById('prop');
     const shares = document.getElementById('shares');
-    const perYear = document.getElementById('perYear');
-    const mps = document.getElementById('mps');
-    const mtot = document.getElementById('mtot');
-    const ytot = document.getElementById('ytot');
+    const months = document.getElementById('months');
+    const mps    = document.getElementById('mps');
+    const mtot   = document.getElementById('mtot');
+    const ttot   = document.getElementById('ttot');
 
-    const defaults = { tampa:{available:6, yearly:1.20}, atlanta:{available:1, yearly:1.20} };
+    // Fixed per-share cost assumption from the cards: $1.20/year = $0.10/month
+    const MONTHLY_PER_SHARE = 0.10;
+
+    const defaults = { tampa:{available:6}, atlanta:{available:1} };
 
     function setBySelect(){
-      const key = prop.value; const d = defaults[key];
-      shares.value = d.available;
-      perYear.value = d.yearly.toFixed(2);
+      const key = prop.value;
+      shares.value = defaults[key].available;
+      months.value = 12;
       compute();
     }
+
     function compute(){
-      const yps = parseFloat(perYear.value||'0');
-      const m_per_share = yps/12;
       const sh = parseFloat(shares.value||'0');
-      mps.textContent = fmtUSD.format(m_per_share);
-      mtot.textContent = fmtUSD.format(m_per_share * sh);
-      ytot.textContent = fmtUSD.format(yps * sh);
+      const mo = parseInt(months.value||'0',10);
+      const monthlyTotal = MONTHLY_PER_SHARE * sh;
+      const termTotal    = monthlyTotal * mo;
+
+      mps.textContent  = fmtUSD.format(MONTHLY_PER_SHARE);
+      mtot.textContent = fmtUSD.format(monthlyTotal);
+      ttot.textContent = fmtUSD.format(termTotal);
     }
-    document.getElementById('calcBtn')?.addEventListener('click', compute);
-    document.getElementById('resetBtn')?.addEventListener('click', ()=>{ setBySelect(); });
-    prop?.addEventListener('change', setBySelect);
-    if (prop) setBySelect();
+
+    document.getElementById('calcBtn').addEventListener('click', compute);
+    document.getElementById('resetBtn').addEventListener('click', setBySelect);
+    prop.addEventListener('change', setBySelect);
+
+    // init
+    setBySelect();
   </script>
 </body>
 </html>
+
 
 
